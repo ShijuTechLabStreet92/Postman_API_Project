@@ -1,0 +1,27 @@
+name: Postman API CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  postman-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run GoRest Collection
+        run: |
+          newman run GoRest_Collection/Gorest_API.postman_collection.json \
+          -e GoRest_Collection/QA_Env.postman_environment.json
