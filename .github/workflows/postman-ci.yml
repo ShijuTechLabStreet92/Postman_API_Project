@@ -23,3 +23,6 @@ jobs:
 
       - name: Run GoRest Collection
         run: newman run GoRest_Collection/Gorest_API.postman_collection.json -e GoRest_Collection/QA_Env.postman_environment.json
+
+      - name: Run Data Driven Testing
+        run: newman run Data_Driven_Testing/Data_Driven_Testing.postman_collection.json -d Data_Driven_Testing/Testdata.csv
