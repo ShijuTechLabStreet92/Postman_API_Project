@@ -19,13 +19,19 @@ jobs:
           node-version: 24
 
       - name: Install Newman
-        run: npm install -g newman
+        run: npm install -g newman newman-reporter-html
 
       - name: Run GoRest Collection
-        run: newman run GoRest_Collection/Gorest_API.postman_collection.json -e GoRest_Collection/QA_Env.postman_environment.json
+        run: newman run GoRest_Collection/Gorest_API.postman_collection.json -e GoRest_Collection/QA_Env.postman_environment.json -r cli,html --reporter-html-export Gorest_Report.html
 
       - name: Run Swagger PET Collection
-        run: newman run Swagger_PET_XMLCollection/Swagger_Pet_API_Xml.postman_collection.json
+        run: newman run Swagger_PET_XMLCollection/Swagger_Pet_API_Xml.postman_collection.json -r cli,html --reporter-html-export Swagger_PET_Report.html
 
-      - name: Run Swagger PET Collection
-        run: newman run Swagger_USER_Collection/Swagger_User_API.postman_collection.json
+      - name: Run Swagger USER Collection
+        run: newman run Swagger_USER_Collection/Swagger_User_API.postman_collection.json -r cli,html --reporter-html-export Swagger_User_Report.html
+
+      - name: Upload HTML Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: Postman-Reports
+          path: "*.html"
