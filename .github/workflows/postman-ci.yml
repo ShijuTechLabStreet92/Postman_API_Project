@@ -22,5 +22,4 @@ jobs:
         run: npm install -g newman
 
       - name: Run GoRest Collection
-        run: newman run GoRest_Collection/Gorest_API.postman_collection.json
-          -e GoRest_Collection/QA_Env.postman_environment.json
+        run: newman run GoRest_Collection/Gorest_API.postman_collection.json -e GoRest_Collection/QA_Env.postman_environment.json
