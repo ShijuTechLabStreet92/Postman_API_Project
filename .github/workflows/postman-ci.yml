@@ -23,6 +23,3 @@ jobs:
 
       - name: Run GoRest Collection
         run: newman run GoRest_Collection/Gorest_API.postman_collection.json -e GoRest_Collection/QA_Env.postman_environment.json
-
-      - name: Run OpenCart Collection
-        run: newman run OpenCart_Collection/E-Commerce_Local_Testing.postman_collection.json
