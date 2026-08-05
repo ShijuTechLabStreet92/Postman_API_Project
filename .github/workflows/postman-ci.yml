@@ -23,3 +23,9 @@ jobs:
 
       - name: Run GoRest Collection
         run: newman run GoRest_Collection/Gorest_API.postman_collection.json -e GoRest_Collection/QA_Env.postman_environment.json
+
+      - name: Run Swagger PET Collection
+        run: newman run Swagger_PET_XMLCollection/Swagger_Pet_API_Xml.postman_collection.json
+
+      - name: Run Swagger PET Collection
+        run: newman run Swagger_USER_Collection/Swagger_User_API.postman_collection.json
